@@ -1,0 +1,27 @@
+[debug] [2019-10-31T17:10:21.840Z] ----------------------------------------------------------------------
+[debug] [2019-10-31T17:10:21.844Z] Command:       C:\Program Files (x86)\Nodist\v-x64\11.13.0\node.exe C:\Program Files (x86)\Nodist\bin\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2019-10-31T17:10:21.844Z] CLI Version:   7.6.2
+[debug] [2019-10-31T17:10:21.845Z] Platform:      win32
+[debug] [2019-10-31T17:10:21.845Z] Node Version:  v11.13.0
+[debug] [2019-10-31T17:10:21.847Z] Time:          Fri Nov 01 2019 02:10:21 GMT+0900 (GMT+09:00)
+[debug] [2019-10-31T17:10:21.847Z] ----------------------------------------------------------------------
+[debug] [2019-10-31T17:10:21.847Z] 
+[debug] [2019-10-31T17:10:21.860Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-10-31T17:10:21.861Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\im209\vue-portfolio\vue-cli
+
+[debug] [2019-10-31T17:16:56.226Z] Error: kill ENOSYS
+    at process.kill (internal/process/per_thread.js:185:13)
+    at process.listener (C:\Program Files (x86)\Nodist\bin\node_modules\firebase-tools\node_modules\signal-exit\index.js:95:15)
+    at process.emit (events.js:193:13)
+[error] 
+[error] Error: An unexpected error has occurred.
