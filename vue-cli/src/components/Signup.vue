@@ -2,30 +2,27 @@
 
     <div class="form-wrapper">
 
-        <h1>Sign In</h1>
+        <h1>Create an account</h1>
 
         <form>
+            
             <div class="form-item">
                 <label for="email"></label>
-                <input type="email" name="email" required="required" placeholder="Email Address">
+                <input type="text" name="email" required="required" placeholder="Email Address" v-bind="email">
             </div>
 
             <div class="form-item">
                 <label for="password"></label>
-                <input type="password" name="password" required="required" placeholder="Password">
+                <input type="password" name="password" required="required" placeholder="Password" v-bind="password">
             </div>
 
-                <input type="submit" class="button" title="Sign In" value="Sign In">
-   
+            <input type="text">
+
+            <button v-on:click="addUser()">test</button>
+
+            <input type="submit" class="button" title="Create an account" value="Create an account" >
 
         </form>
-
-        <div class="form-footer">
-            <p><router-link to="/signup" class="button-panel">
-                Create an account
-            </router-link></p>
-            <p><a href="#">Forgot password?</a></p>
-        </div>
 
     </div>
 
@@ -42,8 +39,25 @@
         password: '',
         errorMessage: '',
         showError: false
+        }
+      },
+       methods: {
+           addUser() {
+               console.log(1111)
+    //         //   firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+    //         //   .then(() => {
+    //         //       console.log('アカウントを作成しました')
+    //         //   })
+    //         //   .catch(function(error) {
+    //         //     // Handle Errors here.
+    //         //     var errorCode = error.code;
+    //         //     var errorMessage = error.message;
+    //         //     // ...
+    //         //    });
+    //             //router.push('home')
+           }
       }
-    },
+    }
     // methods: {
     //   emailLogin() {
     //     firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(reslt => {
@@ -68,7 +82,7 @@
     //     })
     //   }
     // }
-  }
+//   }
 </script>
 
 <style>
@@ -117,7 +131,7 @@ form {
   width: 100%;
 }
 
-.button-panel .button {
+input {
   background: #28B9B5;
   border: none;
   color: #fff;
@@ -127,13 +141,8 @@ form {
   font-size: 1.2em;
   letter-spacing: 0.05em;
   text-align: center;
-  text-transform: uppercase;
   transition: background 0.3s ease-in-out;
   width: 100%;
-}
-
-.button:hover {
-  background: #28B9B5;
 }
 
 .form-footer {

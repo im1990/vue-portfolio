@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
+import Signup from '../components/Signup.vue'
 import firebase from 'firebase'
 
 Vue.use(VueRouter)
@@ -14,26 +15,27 @@ const router = new VueRouter({
     // routingの定義
     routes: [
         {path: '/', component: Login},
-        {path: '/home', component: Home}
+        {path: '/home', component: Home},
+        {path: '/signup', component: Signup}
     ]
 })
 
-router.beforeResolve((to, from, next) => {
-    console.log(to)
-    if(to.path === '/') {
-        next()
-    } else {
-        firebase.auth().onAuthStateChanged(user => {
-            if(user) {
-                console.log('認証中')
-                next()
-            } else {
-                console.log('未認証')
-                next({path: '/'})
-            }
-        })
-    }
-})
+// router.beforeResolve((to, from, next) => {
+//     console.log(to)
+//     if(to.path === '/') {
+//         next()
+//     } else {
+//         firebase.auth().onAuthStateChanged(user => {
+//             if(user) {
+//                 console.log('認証中')
+//                 next()
+//             } else {
+//                 console.log('未認証')
+//                 next({path: '/'})
+//             }
+//         })
+//     }
+// })
 
 export default router
 
