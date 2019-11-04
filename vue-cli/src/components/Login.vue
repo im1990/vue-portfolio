@@ -1,33 +1,26 @@
 <template>
 
-    <div class="form-wrapper">
+  <div class="form-wrapper">
 
-        <h1>Sign In</h1>
+    <h1>Sign In</h1>
 
-        <form>
-            <div class="form-item">
-                <label for="email"></label>
-                <input type="email" name="email" required="required" placeholder="Email Address">
-            </div>
-
-            <div class="form-item">
-                <label for="password"></label>
-                <input type="password" name="password" required="required" placeholder="Password">
-            </div>
-
-                <input type="submit" class="button" title="Sign In" value="Sign In">
-   
-
-        </form>
-
-        <div class="form-footer">
-            <p><router-link to="/signup" class="button-panel">
-                Create an account
-            </router-link></p>
-            <p><a href="#">Forgot password?</a></p>
-        </div>
-
+    <div class="form-item">
+        <label for="email"></label>
+        <input type="email" name="" required="required" placeholder="Email Address" v-model="email">
     </div>
+
+    <div class="form-item">
+        <label for="password"></label>
+        <input type="password" name="" required="required" placeholder="Password" v-model="password">
+    </div>
+    
+    <input type="submit" class="button" title="Sign In" value="Sign In" v-on:click="signin()">
+
+    <div class="form-footer">
+        <p><router-link to="/signup" class="button-panel">Create an account</router-link></p>
+    </div>
+
+  </div>
 
 </template>
 
@@ -44,30 +37,15 @@
         showError: false
       }
     },
-    // methods: {
-    //   emailLogin() {
-    //     firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(reslt => {
-    //       console.log(result)
-    //       router.push('/home')
-    //     }).catch(error => {
-    //       console.log(error)
-    //       this.errorMessage = error.message
-    //       this.showError = true
-    //     })
-    //   },
-    //   googleLogin(){
-    //     const provider = new firebase.auth.GoogleAuthProvider()
-      
-    //     firebase.auth().signInWithPopup(provider).then(result => {
-    //       console.log(result.user)
-    //       router.push('/home')
-    //     }).catch(error => {
-    //       console.log(error)
-    //       this.errorMessage = error.message
-    //       this.showError = true
-    //     })
-    //   }
-    // }
+    methods: {
+      signin() {
+        firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+        .catch(function(error) {
+          alert(error.message)
+        });
+        this.$router.push('home')
+      }
+    }
   }
 </script>
 
@@ -117,7 +95,7 @@ form {
   width: 100%;
 }
 
-.button-panel .button {
+.button {
   background: #28B9B5;
   border: none;
   color: #fff;
@@ -130,10 +108,6 @@ form {
   text-transform: uppercase;
   transition: background 0.3s ease-in-out;
   width: 100%;
-}
-
-.button:hover {
-  background: #28B9B5;
 }
 
 .form-footer {

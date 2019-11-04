@@ -6,6 +6,8 @@
         <!-- 上部 -->
         <div class="top">
 
+            <button class="logout" v-on:click="logout()">Log Out</button>
+
             <div class="budget">
 
                 <h2 class="budget__title">{{ computedYear }}年{{ computedMonth }}月の予算</h2>
@@ -139,6 +141,7 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 
 export default {
    
@@ -293,9 +296,21 @@ export default {
 
     methods: {
         //----------------------------
+        // ログアウト
+        //----------------------------
+        logout() {
+            firebase.auth().signOut().then( () => {
+                // Sign-out successful.
+                this.$router.push('login')
+            }).catch(function(error) {
+                // An error happened.
+                alert(error.message)
+            });
+        },
+        //----------------------------
         // リスト追加関数
         //----------------------------
-        addListItem: function() {
+        addListItem() {
             // inputに入力された内容を参照
             const itemName = this.$refs.itemName
             const itemValue = this.$refs.itemValue
@@ -429,6 +444,17 @@ font-awesome-icon {
     background-position: center;
     position: relative;
     padding: 7rem 0 10rem 0;
+}
+
+.logout {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    padding: 5rem;
+    height: 15rem;
+    border-radius: 3rem;
+    border-radius: 3em .8em 3em .7em/.9em 2em .8em 3em;
+    border: 4px solid #fff; 
 }
 
 .budget {

@@ -14,28 +14,30 @@ const router = new VueRouter({
 
     // routingの定義
     routes: [
-        {path: '/', component: Login},
-        {path: '/home', component: Home},
-        {path: '/signup', component: Signup}
+        {path: '/', component: Login, name: 'login'},
+        {path: '/home', component: Home, name:'home'},
+        {path: '/signup', component: Signup, name: 'signup'}
     ]
 })
 
-// router.beforeResolve((to, from, next) => {
-//     console.log(to)
-//     if(to.path === '/') {
-//         next()
-//     } else {
-//         firebase.auth().onAuthStateChanged(user => {
-//             if(user) {
-//                 console.log('認証中')
-//                 next()
-//             } else {
-//                 console.log('未認証')
-//                 next({path: '/'})
-//             }
-//         })
-//     }
-// })
+router.beforeEach((to, from, next) => {
+
+    if(to.name === 'home') {
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                next()// 通常通りルーティングさせる、無いと白紙の状態でガードがかかってしまう
+                console.log(user)
+            } else {
+                // User is signed out.
+                next({name: 'login'})
+            }
+        });
+    } else {
+        next()
+    }
+})
+
 
 export default router
 

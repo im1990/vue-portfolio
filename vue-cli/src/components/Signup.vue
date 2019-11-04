@@ -4,25 +4,19 @@
 
         <h1>Create an account</h1>
 
-        <form>
             
-            <div class="form-item">
-                <label for="email"></label>
-                <input type="text" name="email" required="required" placeholder="Email Address" v-bind="email">
-            </div>
+        <div class="form-item">
+            <label for="email"></label>
+            <input type="text" name="" required="required" placeholder="Email Address" v-model="email">
+        </div>
 
-            <div class="form-item">
-                <label for="password"></label>
-                <input type="password" name="password" required="required" placeholder="Password" v-bind="password">
-            </div>
+        <div class="form-item">
+            <label for="password"></label>
+            <input type="password" name="" required="required" placeholder="Password" v-model="password">
+        </div>
 
-            <input type="text">
+        <input type="submit" class="button" title="Create an account" value="Create an account" v-on:click="addUser()">
 
-            <button v-on:click="addUser()">test</button>
-
-            <input type="submit" class="button" title="Create an account" value="Create an account" >
-
-        </form>
 
     </div>
 
@@ -43,46 +37,14 @@
       },
        methods: {
            addUser() {
-               console.log(1111)
-    //         //   firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-    //         //   .then(() => {
-    //         //       console.log('アカウントを作成しました')
-    //         //   })
-    //         //   .catch(function(error) {
-    //         //     // Handle Errors here.
-    //         //     var errorCode = error.code;
-    //         //     var errorMessage = error.message;
-    //         //     // ...
-    //         //    });
-    //             //router.push('home')
+              firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+              .catch(function(error) {
+                  alert(error.message)
+               });
+                this.$router.push('home')
            }
       }
     }
-    // methods: {
-    //   emailLogin() {
-    //     firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(reslt => {
-    //       console.log(result)
-    //       router.push('/home')
-    //     }).catch(error => {
-    //       console.log(error)
-    //       this.errorMessage = error.message
-    //       this.showError = true
-    //     })
-    //   },
-    //   googleLogin(){
-    //     const provider = new firebase.auth.GoogleAuthProvider()
-      
-    //     firebase.auth().signInWithPopup(provider).then(result => {
-    //       console.log(result.user)
-    //       router.push('/home')
-    //     }).catch(error => {
-    //       console.log(error)
-    //       this.errorMessage = error.message
-    //       this.showError = true
-    //     })
-    //   }
-    // }
-//   }
 </script>
 
 <style>
@@ -131,7 +93,7 @@ form {
   width: 100%;
 }
 
-input {
+.button {
   background: #28B9B5;
   border: none;
   color: #fff;

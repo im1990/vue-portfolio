@@ -2,12 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App.vue'
 import router from './router/Router.js'
-import firebase from './firebase'
+import firebase from 'firebase'
 import 'firebase/auth'
-
-// firebase.init()
-// firebase.onAuth()
-
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
